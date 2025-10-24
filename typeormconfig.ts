@@ -1,27 +1,21 @@
-import { config } from 'dotenv';
-import { DataSource } from 'typeorm';
-import * as path from 'path';
+import { config } from "dotenv"
+import { DataSource } from "typeorm";
 
-const env = process.env.NODE_ENV || 'development';
-
-const rootDir = path.resolve(__dirname, '..'); 
+const env = process.env.NODE_ENV || 'development'
 
 config({
   override: true,
-  path: path.join(rootDir, `.env.${env}`),
-});
-
-const port = process.env.PORT ? parseInt(process.env.PORT as string, 10) : 5432;
+  path: `.env.${env}`,
+  debug: true
+})
 
 export default new DataSource({
   type: 'postgres',
   host: process.env.HOST,
-  port: port,
+  port: +(process.env.PORT || 5432),
   username: process.env.USERNAME,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
-  synchronize: false, 
-  logging: true, 
-  entities: ['dist/**/*.entity.js'], 
-  migrations: ['dist/database/migrations/*.js'], 
+  entities: ['src/**/*.entity.ts'],
+  migrations: ['src/database/migrations/*.ts']
 });
