@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CategoriasController } from './categorias.controller';
-import { CategoriasService } from './categorias.service';
+import { CategoriasService } from './categorias.service'; // Corregido: Mayúscula inicial
 
 describe('CategoriasController', () => {
   let controller: CategoriasController;
@@ -8,7 +8,7 @@ describe('CategoriasController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [CategoriasController],
-      providers: [CategoriasService],
+      providers: [CategoriasService], // Corregido: Mayúscula inicial
     }).compile();
 
     controller = module.get<CategoriasController>(CategoriasController);

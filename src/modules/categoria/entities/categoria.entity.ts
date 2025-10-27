@@ -1,7 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class categoria {
+export class Categoria { // Corregido: La clase debe usar PascalCase (Mayúscula inicial)
+
 @PrimaryGeneratedColumn()
 id: number;
 

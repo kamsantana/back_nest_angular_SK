@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { DatabaseModule } from './database/database.module';
-import { CategoriasModule } from './modules/categorias/categorias.module';
+import { CategoriasModule } from './modules/categoria/categorias.module';
 
 @Module({
   imports: [
@@ -13,8 +13,8 @@ import { CategoriasModule } from './modules/categorias/categorias.module';
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
     }),
-    AuthModule, 
-    UsersModule, 
+    AuthModule,
+    UsersModule,
     DatabaseModule, CategoriasModule
   ],
   controllers: [AppController],

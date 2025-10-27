@@ -1,11 +1,12 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { CategoriasService } from './categorias.service';
+import { CategoriasService } from './categorias.service'; // Corregido: Mayúscula inicial
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
 import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 
 @Controller('categorias')
 export class CategoriasController {
-  constructor(private readonly categoriasService: CategoriasService) {}
+  // Corregido: Mayúscula inicial en el tipo del servicio inyectado
+  constructor(private readonly categoriasService: CategoriasService) {} 
 
   @Post()
   create(@Body() createCategoriaDto: CreateCategoriaDto) {
@@ -19,6 +20,7 @@ export class CategoriasController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
+    // El '+' convierte el string 'id' en un número
     return this.categoriasService.findOne(+id);
   }
 
