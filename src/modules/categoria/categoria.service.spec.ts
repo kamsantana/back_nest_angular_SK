@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CategoriasService } from './categorias.service'; // Corregido: Mayúscula inicial
+import { CategoriaService } from './categoria.service'; // Corregido: Mayúscula inicial
 
 // Definimos un mock del repositorio para simular sus métodos
 const mockCategoriaRepository = {
@@ -11,12 +11,12 @@ const mockCategoriaRepository = {
 };
 
 describe('CategoriasService', () => {
-  let service: CategoriasService;
+  let service: CategoriaService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        CategoriasService, // Corregido: Mayúscula inicial
+        CategoriaService, // Corregido: Mayúscula inicial
         // Proveedor del repositorio mockeado para la inyección
         {
           provide: 'CATEGORIA_REPOSITORY',
@@ -25,7 +25,7 @@ describe('CategoriasService', () => {
       ],
     }).compile();
 
-    service = module.get<CategoriasService>(CategoriasService);
+    service = module.get<CategoriaService>(CategoriaService);
   });
 
   it('should be defined', () => {

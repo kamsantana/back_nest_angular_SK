@@ -1,17 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CategoriasController } from './categorias.controller';
-import { CategoriasService } from './categorias.service'; // Corregido: Mayúscula inicial
+import { CategoriaController } from './categoria.controller';
+import { CategoriaService } from './categoria.service';
 
-describe('CategoriasController', () => {
-  let controller: CategoriasController;
+describe('CategoriaController', () => {
+  let controller: CategoriaController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [CategoriasController],
-      providers: [CategoriasService], // Corregido: Mayúscula inicial
+      controllers: [CategoriaController],
+      providers: [CategoriaService],
     }).compile();
 
-    controller = module.get<CategoriasController>(CategoriasController);
+    controller = module.get<CategoriaController>(CategoriaController);
   });
 
   it('should be defined', () => {
