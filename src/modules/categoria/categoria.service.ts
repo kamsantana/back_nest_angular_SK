@@ -6,34 +6,29 @@ import { Categoria } from './entities/categoria.entity';
 
 @Injectable()
 export class CategoriaService {
-  constructor(
-    @Inject('CATEGORIA_REPOSITORY')
-    
-    private categoriaRepository: Repository<Categoria>
-  ) {}
+    constructor(@Inject('CATEGORIA_REPOSITORY') private categoriaRepository: Repository<Categoria>) {}
 
-  create(createCategoriaDto: CreateCategoriaDto) {
-  
-    return `This action adds a new categoria`;
-  }
-  
-  
-  async findAll() {
-    return await this.categoriaRepository.find();
-  }
-  
-  findOne(id: number) {
-    
-    return `This action returns a #${id} categoria`;
-  }
+    async create(createCategoriaDto: CreateCategoriaDto) {
+        const categoria = new Categoria();
+        categoria.nombre = createCategoriaDto.nombre;
+        categoria.detalle = createCategoriaDto.detalle;
+        return await this.categoriaRepository.save(categoria);
+    }
 
-  update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-  
-    return `This action updates a #${id} categoria`;
-  }
+    async findAll() {
+        return await this.categoriaRepository.find();
+    }
 
-  remove(id: number) {
-  
-    return `This action removes a #${id} categoria`;
-  }
+    async findOne(id: number) {
+        return await this.categoriaRepository.findOne({ where: { id } });
+    }
+
+    async update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
+        await this.categoriaRepository.update(id, updateCategoriaDto);
+        return await this.findOne(id);
+    }
+
+    async remove(id: number) {
+        return await this.categoriaRepository.delete(id);
+    }
 }
