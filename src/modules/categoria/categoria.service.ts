@@ -16,16 +16,19 @@ export class CategoriaService {
     }
 
     async findAll() {
-        return await this.categoriaRepository.find();
+        return await this.categoriaRepository.find({order:{ id: 'ASC' }});
     }
 
     async findOne(id: number) {
-        return await this.categoriaRepository.findOne({ where: { id } });
+        return await this.categoriaRepository.findOne({
+             where: { 
+                id:id
+             } 
+            });
     }
 
     async update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-        await this.categoriaRepository.update(id, updateCategoriaDto);
-        return await this.findOne(id);
+        return await this.categoriaRepository.update(id, updateCategoriaDto);
     }
 
     async remove(id: number) {

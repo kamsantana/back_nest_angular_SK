@@ -4,26 +4,27 @@ import { Categoria } from "../../categoria/entities/categoria.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('productos')
+
 export class Producto {
 @PrimaryGeneratedColumn()
 id: number;
 
-@Column()
+@Column({ type: 'varchar', length: 250})
 nombre: string;
 
-@Column()
+@Column({ type: 'decimal', precision: 10, scale: 2 })
 precio: number;
 
-@Column()
+@Column({ type: 'int' })
 stock: number;
 
-@Column()
+@Column({ type: 'varchar', length: 250, nullable: true })
 image: string;
 
-@Column()
+@Column({ type: 'text', nullable: true })
 descripción: string;
 
-@Column()
+@Column({ type: 'boolean', default: true })
 estado: boolean;
 
 @ManyToOne(() => Categoria, (cat)=>cat.producto)

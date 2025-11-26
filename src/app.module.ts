@@ -18,4 +18,4 @@ import { PedidoModule } from './modules/pedido/pedido.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
